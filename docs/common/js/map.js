@@ -18,22 +18,13 @@
 	function mapSize() {
 
 		var mapWidth = w - 40;
+		var mapHeight = h - 100;
 		$('#map').css({
-			"width": mapWidth + "px"
+			"width": mapWidth + "px",
+			"height": mapHeight + "px",
+			"margin-left": "auto",
+			"margin-right": "auto",
 		});
-		if (w > 768) {
-			$("#map").css({
-				"height": 700 + "px"
-			});
-		} else if (w > h) {
-			$("#map").css({
-				"height": 300 + "px"
-			});
-		} else {
-			$("#map").css({
-				"height": 500 + "px"
-			});
-		}
 	}
 	mapSize();
 	$(window).resize(mapSize);
@@ -43,9 +34,20 @@
 	var map = L.map('map').setView([lat, lng], zoomSize);
 
 	//basemap
+
+	//地理院地図
+	/*
+	L.tileLayer(
+		'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+			attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル（標準地図）</a>"
+		}).addTo(map);
+	*/
+
+
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
+
 
 	//location
 	var lc = L.control.locate({
