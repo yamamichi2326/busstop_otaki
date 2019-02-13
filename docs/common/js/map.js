@@ -69,7 +69,7 @@
 	$(document).ready(function () {
 		$.ajax({
 			type: "GET",
-			url: "common/data/bus.csv",
+			url: "common/data/data.csv",
 			dataaaType: "text",
 			success: function (data) {
 				displayBus(data)
@@ -80,7 +80,7 @@
 	function displayBus(data) {
 		var dataSplit = data.split('\n');
 		var geojson = csvToGeojson(dataSplit);
-		console.log(geojson)
+		console.log(geojson);
 
 		function csvToGeojson(csvArray) {
 			var geoJsonArray = {
@@ -91,7 +91,7 @@
 
 			for (var i = 1; i < csvArray.length - 1; i++) {
 				var csvArrayData = csvArray[i].split(',');
-				var properties = new Object();
+				var properties = {};
 				for (var j = 3; j < items.length; j++) {
 					properties[items[j]] = csvArrayData[j];
 				}
@@ -114,21 +114,34 @@
 		//marker popup
 		function onEachFeature(feature, layer) {
 			layer.bindPopup(feature.properties.popup);
-		};
+		}
 
 		//marker
 		function markerPointToLayer(feature, latlng) {
-			return L.marker(latlng, {
-				icon: L.icon({
-					iconUrl: feature.properties["icon"],
-					shadowUrl: 'common/img/shadow.png',
-					iconSize: [39, 46],
-					shadowSize: [31, 25],
-					shadowAnchor: [0, 5],
-					popupAnchor: [0, -20]
-				})
-			});
-		};
+			if (feature.properties.status == "photo") {
+				return L.marker(latlng, {
+					icon: L.icon({
+						iconUrl: feature.properties["icon"],
+						iconSize: [40, 40],
+						popupAnchor: [0, -20],
+						className: 'photo-icon'
+					})
+				});
+			} else {
+				return L.marker(latlng, {
+					icon: L.icon({
+						iconUrl: feature.properties["icon"],
+						shadowUrl: 'common/img/shadow.png',
+						iconSize: [39, 46],
+						shadowSize: [31, 25],
+						shadowAnchor: [0, 5],
+						popupAnchor: [0, -20],
+						className: 'img-icon'
+					}),
+					zIndexOffset: 1000
+				});
+			}
+		}
 
 		//layer
 		var busLayer = L.geoJson(geojson, {
@@ -139,8 +152,8 @@
 	//--displayBus
 
 
-	//Photo
 
+<<<<<<< HEAD
 	var photoLayer = L.photo.cluster({
 		spiderfyDistanceMultiplier: 1.2
 	}).on('click', function (evt) {
@@ -178,5 +191,7 @@
 		map.fitBounds(photoLayer.getBounds());
 
 	}
+=======
+>>>>>>> yagi
 
 })();
