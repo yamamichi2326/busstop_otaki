@@ -80,7 +80,7 @@
 	function displayBus(data) {
 		var dataSplit = data.split('\n');
 		var geojson = csvToGeojson(dataSplit);
-		console.log(geojson)
+		console.log(geojson);
 
 		function csvToGeojson(csvArray) {
 			var geoJsonArray = {
@@ -91,7 +91,7 @@
 
 			for (var i = 1; i < csvArray.length - 1; i++) {
 				var csvArrayData = csvArray[i].split(',');
-				var properties = new Object();
+				var properties = {};
 				for (var j = 3; j < items.length; j++) {
 					properties[items[j]] = csvArrayData[j];
 				}
@@ -114,7 +114,7 @@
 		//marker popup
 		function onEachFeature(feature, layer) {
 			layer.bindPopup(feature.properties.popup);
-		};
+		}
 
 		//marker
 		function markerPointToLayer(feature, latlng) {
@@ -128,7 +128,7 @@
 					popupAnchor: [0, -20]
 				})
 			});
-		};
+		}
 
 		//layer
 		var busLayer = L.geoJson(geojson, {
@@ -139,44 +139,6 @@
 	//--displayBus
 
 
-	//Photo
 
-	var photoLayer = L.photo.cluster({
-		spiderfyDistanceMultiplier: 1.2
-	}).on('click', function (evt) {
-		evt.layer.bindPopup(L.Util.template('<img src="{url}"/></a><p>{caption}</p>', evt.layer.photo), {
-			className: 'leaflet-popup-photo',
-			minWidth: 400
-		}).openPopup();
-	});
-
-	//Ajax photo
-	$(document).ready(function () {
-		$.ajax({
-			type: "GET",
-			url: "common/data/photo.csv",
-			dataaaType: "text",
-			success: function (data) {
-				displayPhoto(data)
-			}
-		});
-	});
-
-	function displayPhoto(data) {
-		var lineData = data.split('\n');
-		var photos = [];
-		for (var i = 1; i < lineData.length; i++) {
-			photos.push({
-				lat: lineData[0],
-				lng: lineData[1],
-				url: lineData[2],
-				caption: lineData[3],
-				thumbnail: lineData[4]
-			});
-		}
-		photoLayer.add(photos).addTo(map);
-		map.fitBounds(photoLayer.getBounds());
-
-	}
 
 })();
