@@ -43,7 +43,7 @@
 		}).addTo(map);
 	*/
 
-
+	//OSM
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
@@ -64,7 +64,7 @@
 	}).addTo(map);
 
 
-	//Ajax
+	//Ajax bus.csv
 	$(document).ready(function () {
 		$.ajax({
 			type: "GET",
