@@ -136,47 +136,8 @@
 			pointToLayer: markerPointToLayer
 		}).addTo(map);
 	}
-	//--displayBus
 
 
-	//Photo
 
-	var photoLayer = L.photo.cluster({
-		spiderfyDistanceMultiplier: 1.2
-	}).on('click', function (evt) {
-		evt.layer.bindPopup(L.Util.template('<img src="{url}"/></a><p>{caption}</p>', evt.layer.photo), {
-			className: 'leaflet-popup-photo',
-			minWidth: 400
-		}).openPopup();
-	});
-
-	//Ajax photo
-	$(document).ready(function () {
-		$.ajax({
-			type: "GET",
-			url: "common/data/photo.csv",
-			dataaaType: "text",
-			success: function (data) {
-				displayPhoto(data)
-			}
-		});
-	});
-
-	function displayPhoto(data) {
-		var lineData = data.split('\n');
-		var photos = [];
-		for (var i = 1; i < lineData.length; i++) {
-			photos.push({
-				lat: lineData[0],
-				lng: lineData[1],
-				url: lineData[2],
-				caption: lineData[3],
-				thumbnail: lineData[4]
-			});
-		}
-		photoLayer.add(photos).addTo(map);
-		map.fitBounds(photoLayer.getBounds());
-
-	}
 
 })();

@@ -1,0 +1,21 @@
+{
+	"name": "Busstop Otaki",
+	"version": "1.0.0",
+	"author": "",
+	"devDependencies": {
+		"browser-sync": "^2.12.10",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^3.1.0",
+		"gulp-cached": "^1.1.0",
+		"gulp-changed": "^1.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-csscomb": "^3.0.7",
+		"gulp-notify": "^2.2.0",
+		"gulp-plumber": "^1.1.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-sass": "^2.3.1",
+		"gulp-uglify": "^1.5.3",
+		"gulp-watch": "^4.3.6",
+		"npm-install-missing": "^0.1.4"
+	}
+}

@@ -141,7 +141,7 @@
 
 	//Photo
 
-	var photoLayer = L.photo.Cluster({
+	var photoLayer = L.photo.cluster({
 		spiderfyDistanceMultiplier: 1.2
 	}).on('click', function (evt) {
 		evt.layer.bindPopup(L.Util.template('<img src="{url}"/></a><p>{caption}</p>', evt.layer.photo), {
