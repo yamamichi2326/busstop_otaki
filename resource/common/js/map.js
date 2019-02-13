@@ -69,7 +69,7 @@
 	$(document).ready(function () {
 		$.ajax({
 			type: "GET",
-			url: "common/data/bus.csv",
+			url: "common/data/data.csv",
 			dataaaType: "text",
 			success: function (data) {
 				displayBus(data)
@@ -118,16 +118,29 @@
 
 		//marker
 		function markerPointToLayer(feature, latlng) {
-			return L.marker(latlng, {
-				icon: L.icon({
-					iconUrl: feature.properties["icon"],
-					shadowUrl: 'common/img/shadow.png',
-					iconSize: [39, 46],
-					shadowSize: [31, 25],
-					shadowAnchor: [0, 5],
-					popupAnchor: [0, -20]
-				})
-			});
+			if (feature.properties.status == "photo") {
+				return L.marker(latlng, {
+					icon: L.icon({
+						iconUrl: feature.properties["icon"],
+						iconSize: [40, 40],
+						popupAnchor: [0, -20],
+						className: 'photo-icon'
+					})
+				});
+			} else {
+				return L.marker(latlng, {
+					icon: L.icon({
+						iconUrl: feature.properties["icon"],
+						shadowUrl: 'common/img/shadow.png',
+						iconSize: [39, 46],
+						shadowSize: [31, 25],
+						shadowAnchor: [0, 5],
+						popupAnchor: [0, -20],
+						className: 'img-icon'
+					}),
+					zIndexOffset: 1000
+				});
+			}
 		}
 
 		//layer
