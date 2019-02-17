@@ -66,8 +66,8 @@
 	}).addTo(map);
 
 
-	//Bus
-	//Ajax bus.csv
+	//Data
+	//Ajax data.csv
 	$(document).ready(function () {
 		$.ajax({
 			type: "GET",
@@ -82,7 +82,7 @@
 	function displayData(data) {
 		var dataSplit = data.split('\n');
 		var geojson = csvToGeojson(dataSplit);
-		console.log(geojson);
+		console.log(dataSplit);
 
 		function csvToGeojson(csvArray) {
 			var geoJsonArray = {
@@ -119,6 +119,7 @@
 		}
 
 		//marker
+		/*
 		function markerPointToLayer(feature, latlng) {
 			if (feature.properties.status == "photo") {
 				return L.marker(latlng, {
@@ -131,28 +132,36 @@
 				});
 			} else {
 				return L.marker(latlng, {
-					icon: L.icon({
-						iconUrl: feature.properties["icon"],
-						shadowUrl: 'common/img/shadow.png',
-						iconSize: [39, 46],
-						shadowSize: [31, 25],
-						shadowAnchor: [0, 5],
-						popupAnchor: [0, -20],
-						className: 'img-icon'
-					}),
-					zIndexOffset: 1000
+					icon: L.AwesomeMarkers.icon({
+						icon: feature.properties["icon"],
+						prefix: 'fa',
+						markerColor: feature.properties.iconColor
+					})
+
 				});
 			}
 		}
+*/
+
+		function markerPointToLayer(feature, latlng) {
+
+			return L.marker(latlng, {
+				icon: L.icon({
+					iconUrl: feature.properties.icon,
+					shadowUrl: 'common/img/icon/shadow.png',
+					iconSize: [39, 46],
+					shadowSize: [31, 25],
+					shadowAnchor: [0, 5],
+					popupAnchor: [0, -20],
+					className: 'img-icon'
+				})
+			});
+		}
+
 
 		//markerCuluster
 		var markers = L.markerClusterGroup({
-			disableClusteringAtZoom: 16
-		});
-		markers.on('clusterClick', function (a) {
-			a.layer.zoomToBounds({
-				padding: [10, 10]
-			});
+			disableClusteringAtZoom: 17
 		});
 
 		//layer
@@ -164,8 +173,5 @@
 		map.addLayer(markers);
 
 	}
-
-
-
 
 })();
