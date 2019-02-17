@@ -31,7 +31,9 @@
 
 
 	//map
-	var map = L.map('map').setView([lat, lng], zoomSize);
+	var map = L.map('map', {
+		gestureHandling: true
+	}).setView([lat, lng], zoomSize);
 
 	//basemap
 
@@ -72,12 +74,12 @@
 			url: "common/data/data.csv",
 			dataaaType: "text",
 			success: function (data) {
-				displayBus(data)
+				displayData(data)
 			}
 		});
 	});
 
-	function displayBus(data) {
+	function displayData(data) {
 		var dataSplit = data.split('\n');
 		var geojson = csvToGeojson(dataSplit);
 		console.log(geojson);
@@ -143,11 +145,24 @@
 			}
 		}
 
+		//markerCuluster
+		var markers = L.markerClusterGroup({
+			disableClusteringAtZoom: 16
+		});
+		markers.on('clusterClick', function (a) {
+			a.layer.zoomToBounds({
+				padding: [10, 10]
+			});
+		});
+
 		//layer
-		var busLayer = L.geoJson(geojson, {
+		var dataLayer = L.geoJson(geojson, {
 			onEachFeature: onEachFeature,
 			pointToLayer: markerPointToLayer
-		}).addTo(map);
+		});
+		markers.addLayer(dataLayer);
+		map.addLayer(markers);
+
 	}
 
 
