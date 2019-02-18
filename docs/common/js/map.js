@@ -163,13 +163,7 @@
 		var markers = L.markerClusterGroup({
 			disableClusteringAtZoom: 17
 		});
-		/*
-		markers.on('clusterClick', function (a) {
-			a.layer.zoomToBounds({
-				padding: [10, 10]
-			});
-		});
-*/
+
 		//layer
 		var dataLayer = L.geoJson(geojson, {
 			onEachFeature: onEachFeature,
@@ -179,8 +173,5 @@
 		map.addLayer(markers);
 
 	}
-
-
-
 
 })();
