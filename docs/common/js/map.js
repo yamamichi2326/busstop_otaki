@@ -113,7 +113,7 @@
 	//displayPhotoData
 	function displayPhotoData(data) {
 		var photoGeojson = csvToGeojson(data);
-		console.log(photoGeojson);
+
 
 		//layer
 		var photoDataLayer = L.geoJson(photoGeojson, {
@@ -131,7 +131,7 @@
 			"features": []
 		}
 		var items = dataSplit[0].split(',');
-		console.log(items);
+
 		for (var i = 1; i < dataSplit.length - 1; i++) {
 			var csvArrayData = dataSplit[i].split(',');
 			var properties = {};
