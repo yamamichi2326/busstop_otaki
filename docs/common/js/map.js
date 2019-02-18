@@ -178,7 +178,6 @@
 						prefix: 'fa',
 						markerColor: feature.properties.iconColor
 					})
-
 				});
 			}
 		}
@@ -187,14 +186,10 @@
 	//markerPointToLayer
 	function markerPointToLayer(feature, latlng) {
 		return L.marker(latlng, {
-			icon: L.icon({
-				iconUrl: feature.properties.icon,
-				shadowUrl: 'common/img/icon/shadow.png',
-				iconSize: [39, 46],
-				shadowSize: [31, 25],
-				shadowAnchor: [0, 5],
-				popupAnchor: [0, -20],
-				className: 'img-icon'
+			icon: L.AwesomeMarkers.icon({
+				icon: feature.properties["icon"],
+				prefix: 'fa',
+				markerColor: feature.properties.iconColor
 			})
 		});
 	}

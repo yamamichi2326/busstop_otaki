@@ -74,7 +74,7 @@
 			url: "common/data/data.csv",
 			dataaaType: "text",
 			success: function (data) {
-				displayData(data)
+				displayData(data);
 			}
 		});
 	});
@@ -105,7 +105,7 @@
 			url: "common/data/photoData.csv",
 			dataaaType: "text",
 			success: function (data) {
-				displayPhotoData(data)
+				displayPhotoData(data);
 			}
 		});
 	});
@@ -129,7 +129,7 @@
 		var geoJsonArray = {
 			"type": "FeatureCollection",
 			"features": []
-		}
+		};
 		var items = dataSplit[0].split(',');
 
 		for (var i = 1; i < dataSplit.length - 1; i++) {
@@ -160,41 +160,14 @@
 	}
 
 	//marker
-	/*
-		function markerPointToLayer(feature, latlng) {
-			if (feature.properties.status == "photo") {
-				return L.marker(latlng, {
-					icon: L.icon({
-						iconUrl: feature.properties["icon"],
-						iconSize: [40, 40],
-						popupAnchor: [0, -20],
-						className: 'photo-icon'
-					})
-				});
-			} else {
-				return L.marker(latlng, {
-					icon: L.AwesomeMarkers.icon({
-						icon: feature.properties["icon"],
-						prefix: 'fa',
-						markerColor: feature.properties.iconColor
-					})
-
-				});
-			}
-		}
-*/
 
 	//markerPointToLayer
 	function markerPointToLayer(feature, latlng) {
 		return L.marker(latlng, {
-			icon: L.icon({
-				iconUrl: feature.properties.icon,
-				shadowUrl: 'common/img/icon/shadow.png',
-				iconSize: [39, 46],
-				shadowSize: [31, 25],
-				shadowAnchor: [0, 5],
-				popupAnchor: [0, -20],
-				className: 'img-icon'
+			icon: L.AwesomeMarkers.icon({
+				icon: feature.properties.icon,
+				prefix: 'fa',
+				markerColor: feature.properties.iconColor
 			})
 		});
 	}
