@@ -18,7 +18,7 @@
 	function mapSize() {
 
 		var mapWidth = w - 40;
-		var mapHeight = h - 100;
+		var mapHeight = h - 130;
 		$('#map').css({
 			"width": mapWidth + "px",
 			"height": mapHeight + "px",
@@ -72,7 +72,7 @@
 		$.ajax({
 			type: "GET",
 			url: "common/data/data.csv",
-			dataaaType: "text",
+			dataType: "text",
 			success: function (data) {
 				displayData(data);
 			}
@@ -90,11 +90,11 @@
 		});
 
 		//layer
-		var dataLayer = L.geoJson(geojson, {
+		var dataLayer01 = L.geoJson(geojson, {
 			onEachFeature: onEachFeature,
 			pointToLayer: markerPointToLayer
 		});
-		markers.addLayer(dataLayer);
+		markers.addLayer(dataLayer01);
 		map.addLayer(markers);
 	}
 

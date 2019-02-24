@@ -1,3 +1,7 @@
+header {
+	margin-left: 50px;
+}
+
 .photo-icon {
 	border: 2px solid #fff;
 	box-shadow: 3px 3px 10px #888;
@@ -11,4 +15,8 @@
 .leaflet-popup-content img {
 	width: 100%;
 	height: auto;
+}
+
+footer {
+	text-align: center;
 }

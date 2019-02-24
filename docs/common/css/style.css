@@ -4,6 +4,11 @@ body
     padding: 0;
 }
 
+header
+{
+    margin-left: 50px;
+}
+
 .photo-icon
 {
     border: 2px solid #fff;
@@ -20,4 +25,9 @@ body
 {
     width: 100%;
     height: auto;
+}
+
+footer
+{
+    text-align: center;
 }
