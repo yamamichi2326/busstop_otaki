@@ -7,6 +7,7 @@
 	var w = $(window).width();
 	var h = $(window).height();
 
+
 	//zoomSize
 	if (w <= 768) {
 		zoomSize = 14;
@@ -82,21 +83,22 @@
 	//displayData
 	function displayData(data) {
 		var geojson = csvToGeojson(data);
-		console.log(geojson);
+
 
 		//markerCuluster
 		var markers = L.markerClusterGroup({
 			disableClusteringAtZoom: 17
 		});
 
-		//layer
-		var dataLayer01 = L.geoJson(geojson, {
+
+		var dataLayer = L.geoJson(geojson, {
 			onEachFeature: onEachFeature,
 			pointToLayer: markerPointToLayer
 		});
-		markers.addLayer(dataLayer01);
+		markers.addLayer(dataLayer);
 		map.addLayer(markers);
 	}
+
 
 	//Ajax phtodata.csv
 	$(document).ready(function () {
