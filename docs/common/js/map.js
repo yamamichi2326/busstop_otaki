@@ -179,12 +179,11 @@
 		return L.marker(latlng, {
 			icon: L.icon({
 				iconUrl: feature.properties.icon,
-				shadowUrl: 'common/img/icon/photoshadow.png',
+
 				iconSize: [20, 20],
-				shadowSize: [39, 20],
-				shadowAnchor: [10, 6],
+
 				popupAnchor: [0, -20],
-				className: 'Photo-icon'
+				className: 'photo-icon'
 			})
 		});
 	}
