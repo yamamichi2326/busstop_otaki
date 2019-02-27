@@ -54,6 +54,6 @@ https://html5-editor.net/
 
 
 ### ライセンス
-Leaflet.AwesomeMarkersとcolored markersはMITライセンスの下でライセンスされています   
+* Leaflet.AwesomeMarkersとcolored markersはMITライセンスの下でライセンスされています   
 http://opensource.org/licenses/mit-license.html.
-Font Awesome: http://fortawesome.github.io/Font-Awesome/license/
+* Font Awesome: http://fortawesome.github.io/Font-Awesome/license/

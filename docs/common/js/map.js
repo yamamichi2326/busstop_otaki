@@ -179,9 +179,7 @@
 		return L.marker(latlng, {
 			icon: L.icon({
 				iconUrl: feature.properties.icon,
-
 				iconSize: [20, 20],
-
 				popupAnchor: [0, -20],
 				className: 'photo-icon'
 			})
