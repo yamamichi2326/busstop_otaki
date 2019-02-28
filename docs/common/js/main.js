@@ -43,16 +43,13 @@
 		} else {
 			zoomSize = parseFloat(data.zoomSize) - 1;
 		};
-		console.log(zoomSize)
+
 		//map
 		map = L.map('map', {
 			gestureHandling: true
 		}).setView([data.lat, data.lng], zoomSize);
 
-
-
 		//basemap
-
 		//地理院地図
 		/*
 		L.tileLayer(
@@ -120,19 +117,21 @@
 	//Ajax data.csv
 	$(document).ready(function () {
 		$.ajax({
-			type: "GET",
-			url: "common/data/data.csv",
-			dataType: "text",
-			success: function (data) {
-				displayData(data);
-			}
-		});
+				type: "GET",
+				url: "common/data/data.csv",
+				dataType: "text"
+			})
+			.then(
+				function (data) {
+					displayData(data);
+				}
+			);
 	});
+
 
 	//displayData
 	function displayData(data) {
 		var geojson = csvToGeojson(data);
-
 
 		//markerCuluster
 		var markers = L.markerClusterGroup({
@@ -150,14 +149,17 @@
 	//Ajax phtodata.csv
 	$(document).ready(function () {
 		$.ajax({
-			type: "GET",
-			url: "common/data/photoData.csv",
-			dataaaType: "text",
-			success: function (data) {
-				displayPhotoData(data);
-			}
-		});
+				type: "GET",
+				url: "common/data/photoData.csv",
+				dataaaType: "text"
+			})
+			.then(
+				function (data) {
+					displayPhotoData(data);
+				}
+			);
 	});
+
 
 	//displayPhotoData
 	function displayPhotoData(data) {
