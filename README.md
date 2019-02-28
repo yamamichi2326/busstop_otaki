@@ -18,15 +18,19 @@ leaflet1.3.1を使用しています。
 * github上で編集できます。
 * データをダウンロードして編集する場合はcsvエディタを使用してください。   
 * Excelでは編集しないでください。
+* descriptionは直接表示されませんが、ページの説明になります。
+* latはマップの中心緯度、lngは中心経度を入れてください。
+* 緯度経度は下記のサイトで調べられます。  
+「ウェブ地図で緯度・経度を求める （Leaflet版）地理＠沼津高専」  
+https://user.numazu-ct.ac.jp/~tsato/webmap/sphere/coordinates/advanced.html
+* zoomSizeはデモでは14になっています。地図を大きく表示したい場合は数字を大きくしてください。
 
 ### アイコンデータの編集
 * docsのdataフォルダにあるdata.csvを編集します。
 * github上でcsvを編集できますが、「raw」から生データをコピペしてcsvエディタなどで編集したほうが楽だと思います。   
 csvの文字コードはutf-8、カンマ区切り、囲み文字なし、改行コード\LFです。  
 * Excelでは編集しないでください。  
-* 緯度経度は下記のサイトで調べられます。  
-「ウェブ地図で緯度・経度を求める （Leaflet版）地理＠沼津高専」  
-https://user.numazu-ct.ac.jp/~tsato/webmap/sphere/coordinates/advanced.html
+* 緯度経度の調べ方は上の「基本情報の編集」をご覧ください。
 * アイコン画像はFont Awesomeを使用しています。アイコン名をcsvのiconに入れてください。   
 https://fontawesome.com/
 * iconColorは次のどれかの色を指定してください。  
